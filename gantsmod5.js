@@ -24,7 +24,7 @@ function funcUpdatePageSize(isMainDivSizeUpdate) {
   }
 }
 
-mainDiv.style.backgroundImage = "url('img/gantsmod.png')";
+mainDiv.style.backgroundImage = "url('img/gants/gantsmod.png')";
 funcUpdatePageSize(true);
 var arrYellow = new Array();
 

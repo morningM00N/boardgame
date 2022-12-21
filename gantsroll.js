@@ -81,13 +81,13 @@ function funcDrawGantsRoll() {
     let selectedDice =
         funcInsertElement("imgSelected", "img", null,
             0, 0, length, 1, 59 / 174)
-    selectedDice.src = "img/gantsroll.png"
+    selectedDice.src = "img/gants/gantsroll.png"
 
 
     let btnSilverPlate =
         funcInsertElement("btnPlate", "img", null,
             0.6, 0, 1, 1)
-    btnSilverPlate.src = "img/silverplate.png"
+    btnSilverPlate.src = "img/gants/silverplate.png"
 
     palleteLeft = getNumber(selectedDice.style.width)
     palleteRight = getNumber(btnSilverPlate.style.left)
