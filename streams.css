@@ -9,7 +9,7 @@ input{
     font-family: 'Bangers', cursive;
 }
 .bgdiv {
-    background-image: url('https://github.com/morningM00N/bg/blob/master/img/streams.png?raw=true');
+    background-image: url('img/streams.png?raw=true');
     background-repeat: no-repeat;
     background-size: 100%;
     border: 0px;
