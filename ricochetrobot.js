@@ -63,9 +63,11 @@ function moveRobot(color,direction)
         targetCol += dc[direction]
     }
 
+    let cellSize = board.tiles[0][0].td.getBoundingClientRect().width
+
     board.tiles[targetRow][targetCol].robot=true
-    board.robots[color][0].style.left = board.tiles[targetRow][targetCol].td.getBoundingClientRect().left+"px"
-    board.robots[color][0].style.top = board.tiles[targetRow][targetCol].td.getBoundingClientRect().top+"px"
+    board.robots[color][0].style.left = (board.tiles[targetRow][targetCol].td.getBoundingClientRect().left+cellSize*0.05)+"px"
+    board.robots[color][0].style.top = (board.tiles[targetRow][targetCol].td.getBoundingClientRect().top+cellSize*0.05)+"px"
     board.robots[color][1][0]=targetRow
     board.robots[color][1][1]=targetCol
 }
@@ -86,7 +88,7 @@ function funcDraw() {
     }
 
     let remoteControlloerTbl = document.getElementById('remoteControlloerTbl');
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 6; i++) {
         let tr = document.createElement('tr');
         remoteControlloerTbl.appendChild(tr)
         for (let j = 0; j < 9; j++) {
@@ -96,67 +98,113 @@ function funcDraw() {
         }
     }
     {
+        let buttonleft = document.createElement('button')
+        buttonleft.className="triangle-button rotate-270"
+        let buttonright = document.createElement('button')
+        buttonright.className="triangle-button rotate-90"
+        let buttontop = document.createElement('button')
+        buttontop.className="triangle-button"
+        let buttonbottom = document.createElement('button')
+        buttonbottom.className="triangle-button rotate-180"
         let tdTemp = document.getElementById('remoteTile_1_1');
         let button = document.createElement('button')
         button.className = "round-button blue-button"
         tdTemp.appendChild(button)
+        document.getElementById('remoteTile_1_0').appendChild(buttonleft)
         document.getElementById('remoteTile_1_0').onclick=function(){
             moveRobot("blue",LEFT)
         };
+        document.getElementById('remoteTile_1_2').appendChild(buttonright)
         document.getElementById('remoteTile_1_2').onclick=function(){
             moveRobot("blue",RIGHT)
         };
+        document.getElementById('remoteTile_0_1').appendChild(buttontop)
         document.getElementById('remoteTile_0_1').onclick=function(){
             moveRobot("blue",TOP)
         };
+        document.getElementById('remoteTile_2_1').appendChild(buttonbottom)
         document.getElementById('remoteTile_2_1').onclick=function(){
             moveRobot("blue",BOTTOM)
         };
     }
     {
+        let buttonleft = document.createElement('button')
+        buttonleft.className="triangle-button rotate-270"
+        let buttonright = document.createElement('button')
+        buttonright.className="triangle-button rotate-90"
+        let buttontop = document.createElement('button')
+        buttontop.className="triangle-button"
+        let buttonbottom = document.createElement('button')
+        buttonbottom.className="triangle-button rotate-180"
         let tdTemp = document.getElementById('remoteTile_1_4');
         let button = document.createElement('button')
         button.className = "round-button red-button"
         tdTemp.appendChild(button)
+        document.getElementById('remoteTile_1_3').appendChild(buttonleft)
         document.getElementById('remoteTile_1_3').onclick=function(){
             moveRobot("red",LEFT)
         };
+        document.getElementById('remoteTile_1_5').appendChild(buttonright)
         document.getElementById('remoteTile_1_5').onclick=function(){
             moveRobot("red",RIGHT)
         };
+        document.getElementById('remoteTile_0_4').appendChild(buttontop)
         document.getElementById('remoteTile_0_4').onclick=function(){
             moveRobot("red",TOP)
         };
+        document.getElementById('remoteTile_2_4').appendChild(buttonbottom)
         document.getElementById('remoteTile_2_4').onclick=function(){
             moveRobot("red",BOTTOM)
         };
     }
     {
+        let buttonleft = document.createElement('button')
+        buttonleft.className="triangle-button rotate-270"
+        let buttonright = document.createElement('button')
+        buttonright.className="triangle-button rotate-90"
+        let buttontop = document.createElement('button')
+        buttontop.className="triangle-button"
+        let buttonbottom = document.createElement('button')
+        buttonbottom.className="triangle-button rotate-180"
         let tdTemp = document.getElementById('remoteTile_1_7');
         let button = document.createElement('button')
         button.className = "round-button gray-button"
         tdTemp.appendChild(button)
+        document.getElementById('remoteTile_1_6').appendChild(buttonleft)
         document.getElementById('remoteTile_1_6').onclick=function(){
             moveRobot("gray",LEFT)
         };
+        document.getElementById('remoteTile_1_8').appendChild(buttonright)
         document.getElementById('remoteTile_1_8').onclick=function(){
             moveRobot("gray",RIGHT)
         };
+        document.getElementById('remoteTile_0_7').appendChild(buttontop)
         document.getElementById('remoteTile_0_7').onclick=function(){
             moveRobot("gray",TOP)
         };
+        document.getElementById('remoteTile_2_7').appendChild(buttonbottom)
         document.getElementById('remoteTile_2_7').onclick=function(){
             moveRobot("gray",BOTTOM)
         };
     }
     {
+        let buttonleft = document.createElement('button')
+        buttonleft.className="triangle-button rotate-270"
+        let buttonright = document.createElement('button')
+        buttonright.className="triangle-button rotate-90"
+        let buttontop = document.createElement('button')
+        buttontop.className="triangle-button"
+        let buttonbottom = document.createElement('button')
+        buttonbottom.className="triangle-button rotate-180"
         let tdTemp = document.getElementById('remoteTile_4_1');
         let button = document.createElement('button')
         button.className = "round-button yellow-button"
         tdTemp.appendChild(button)
+        document.getElementById('remoteTile_4_0').appendChild(buttonleft)
         document.getElementById('remoteTile_4_0').onclick=function(){
             moveRobot("yellow",LEFT)
         };
+        document.getElementById('remoteTile_4_2').appendChild(buttonright)
         document.getElementById('remoteTile_4_2').onclick=function(){
             moveRobot("yellow",RIGHT)
         };
@@ -166,8 +214,18 @@ function funcDraw() {
         document.getElementById('remoteTile_5_1').onclick=function(){
             moveRobot("yellow",BOTTOM)
         };
+        document.getElementById('remoteTile_3_1').appendChild(buttontop)
+        document.getElementById('remoteTile_5_1').appendChild(buttonbottom)
     }
     {
+        let buttonleft = document.createElement('button')
+        buttonleft.className="triangle-button rotate-270"
+        let buttonright = document.createElement('button')
+        buttonright.className="triangle-button rotate-90"
+        let buttontop = document.createElement('button')
+        buttontop.className="triangle-button"
+        let buttonbottom = document.createElement('button')
+        buttonbottom.className="triangle-button rotate-180"
         let tdTemp = document.getElementById('remoteTile_4_4');
         let button = document.createElement('button')
         button.className = "round-button green-button"
@@ -184,6 +242,12 @@ function funcDraw() {
         document.getElementById('remoteTile_5_4').onclick=function(){
             moveRobot("green",BOTTOM)
         };
+
+        document.getElementById('remoteTile_4_3').appendChild(buttonleft)
+        document.getElementById('remoteTile_4_5').appendChild(buttonright)
+        document.getElementById('remoteTile_3_4').appendChild(buttontop)
+        document.getElementById('remoteTile_5_4').appendChild(buttonbottom)
+
 
     }
 
@@ -308,6 +372,14 @@ class Board {
                 }
                 
             }
+        }
+
+        for (let row = 7; row <= 8; row++) {
+            for (let col = 7; col <= 8; col++) {
+              this.tiles[row][col].robot=true
+              this.tiles[row][col].td.style.backgroundColor="black"
+            }
+            
         }
     }
 }
