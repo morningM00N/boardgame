@@ -1,5 +1,5 @@
 .bgdiv {
-    background-image: url("img/diamant/bg.jpg");
+    background-image: url("https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/bg.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     border: 0px;
@@ -42,4 +42,28 @@ body{
     position: absolute;
     border-radius: 5%;
     color:black;
+}
+
+/* diamant.css에 추가할 애니메이션 스타일 */
+@keyframes cardMove {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.7;
+        left: var(--start-left);
+        top: var(--start-top);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+        left: var(--end-left);
+        top: var(--end-top);
+    }
+}
+
+.card-animation {
+    position: absolute;
+    background-size: 100% 100%;
+    animation: cardMove 0.5s ease-out forwards;
+    z-index: 100;
+    border-radius: 5%;
 }
