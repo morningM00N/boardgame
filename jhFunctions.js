@@ -247,10 +247,16 @@ function funcSetLocation(_id, leftTopX, leftTopY, rightBottomX, rightBottomY, is
 }
 
 function funcRelocateElement(_id) {
+    let el = document.getElementById(_id);
+    if (!el) return;   // 요소가 없으면 조용히 종료
+
     let landIdx = 1
     if (pageWidth < pageHeight == true) {
         landIdx = 0
     }
+
+    if (!mapLocationInfor[_id]) return;
+
 
     let leftTopX = mapLocationInfor[_id].loc[landIdx][0]
     let leftTopY = mapLocationInfor[_id].loc[landIdx][1]
@@ -322,14 +328,14 @@ function funcPrepareGetLocation() {
 
 
 function funcRelocateElements() {
-    // alert("here")
-
     for (let idx = 0; idx < nameOfRelocatedElements.length; idx++) {
-        funcRelocateElement(nameOfRelocatedElements[idx])
+        let elementId = nameOfRelocatedElements[idx];
+        // 요소가 존재하는지 확인 후 재배치
+        if (document.getElementById(elementId) && mapLocationInfor[elementId]) {
+            funcRelocateElement(elementId);
+        }
     }
-
 }
-
 var doResize = true
 $(window).resize(function () {
     if (doResize == false) {
