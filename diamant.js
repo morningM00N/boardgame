@@ -139,7 +139,7 @@ function diamantDrawTiles() {
 
         var btnCave1 = appendElement("button", "btnCave1", "cards", 0.0215, 0.729, 0.151, 0.163, 0.1)
         btnCave1.style.borderRadius = "5%"
-        btnCave1.style.backgroundImage = "url('img/diamant/stg1.png')"
+        btnCave1.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg1.png')"
         btnCave1.style.backgroundSize = btnCave1.style.width + " " + btnCave1.style.height
         btnCave1.onclick = function() {
             funcCave(1)
@@ -147,7 +147,7 @@ function diamantDrawTiles() {
 
         var btnCave2 = appendElement("button", "btnCave2", "cards", 0.1933, 0.793, 0.151, 0.163, 0.1)
         btnCave2.style.borderRadius = "5%"
-        btnCave2.style.backgroundImage = "url('img/diamant/stg2.png')"
+        btnCave2.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg2.png')"
         btnCave2.style.backgroundSize = btnCave2.style.width + " " + btnCave2.style.height
         btnCave2.onclick = function() {
             funcCave(2)
@@ -155,7 +155,7 @@ function diamantDrawTiles() {
 
         var btnCave3 = appendElement("button", "btnCave3", "cards", 0.420, 0.810, 0.151, 0.163, 0.1)
         btnCave3.style.borderRadius = "5%"
-        btnCave3.style.backgroundImage = "url('img/diamant/stg3.png')"
+        btnCave3.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg3.png')"
         btnCave3.style.backgroundSize = btnCave3.style.width + " " + btnCave3.style.height
 
         btnCave3.onclick = function() {
@@ -164,7 +164,7 @@ function diamantDrawTiles() {
 
         var btnCave4 = appendElement("button", "btnCave4", "cards", 0.624, 0.810, 0.151, 0.163, 0.1)
         btnCave4.style.borderRadius = "5%"
-        btnCave4.style.backgroundImage = "url('img/diamant/stg4.png')"
+        btnCave4.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg4.png')"
         btnCave4.style.backgroundSize = btnCave4.style.width + " " + btnCave4.style.height
 
         btnCave4.onclick = function() {
@@ -173,7 +173,7 @@ function diamantDrawTiles() {
 
         var btnCave5 = appendElement("button", "btnCave5", "cards", 0.827, 0.810, 0.151, 0.163, 0.1)
         btnCave5.style.borderRadius = "5%"
-        btnCave5.style.backgroundImage = "url('img/diamant/stg5.png')"
+        btnCave5.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg5.png')"
         btnCave5.style.backgroundSize = btnCave5.style.width + " " + btnCave5.style.height
 
         btnCave5.onclick = function() {
@@ -217,7 +217,7 @@ function shuffleOrder(){
 
 for (let idx = 0; idx < cards.length; idx++) {
     var btnTemp = appendElement("button", "idTemp" + idx, "empty", 0, 0, 0.005, 0.005, 0.01)
-    btnTemp.style.backgroundImage = "url('img/diamant/" + cards[idx] + ".png')"
+    btnTemp.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/" + cards[idx] + ".png')"
 
 }
 var usingCards = new Array()
@@ -249,66 +249,97 @@ for (let idx = 1; idx < 6; idx++) {
 
 var roundReady = false
 shuffleOrder()
-
+// funcDrawCard 함수를 수정합니다
 function funcDrawCard() {
     if (roundReady == false) {
         if (curRound == 6) {
-            alert("게임이 종료되었습니다!")
-            return
+            alert("게임이 종료되었습니다!");
+            return;
         }
-        alert("라운드 버튼을 눌러주세요.")
-        return
+        alert("라운드 버튼을 눌러주세요.");
+        return;
     }
-    console.log("draw cards")
-    var btn = document.getElementById("btnDrawCards")
-    var rndNumber = order[orderIdx++]
+    console.log("draw cards");
+    
+    // 카드 선택
+    var rndNumber = order[orderIdx++];
     while (usingCards[rndNumber] == false) {
-        rndNumber = order[orderIdx++]
+        rndNumber = order[orderIdx++];
     }
-    console.log(rndNumber)
-    btn.style.backgroundImage = "url('img/diamant/" + cards[rndNumber] + ".png')"
-    btn.style.backgroundSize = btn.style.width + " " + btn.style.height
-    if (rndNumber >= 15 && rndNumber < 30) {
-        var dmgIdx = Math.floor((rndNumber - 15) / 3)
-        thisDmg[dmgIdx]++
+    console.log(rndNumber);
+    
+    // 출발지 버튼(btnCards)의 위치 가져오기
+    var sourceBtn = document.getElementById("btnCards");
+    var sourceBtnRect = sourceBtn.getBoundingClientRect();
+    
+    // 목적지 버튼(btnDrawCards)의 위치 가져오기
+    var targetBtn = document.getElementById("btnDrawCards");
+    var targetBtnRect = targetBtn.getBoundingClientRect();
+    
+    // 애니메이션을 위한 임시 요소 생성
+    var animCard = document.createElement("div");
+    animCard.className = "card-animation";
+    animCard.style.width = sourceBtnRect.width + "px";
+    animCard.style.height = sourceBtnRect.height + "px";
+    animCard.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/" + cards[rndNumber] + ".png')";
+    animCard.style.backgroundSize = "100% 100%";
+    
+    // CSS 변수로 시작 위치와 끝 위치 설정
+    animCard.style.setProperty("--start-left", sourceBtnRect.left + "px");
+    animCard.style.setProperty("--start-top", sourceBtnRect.top + "px");
+    animCard.style.setProperty("--end-left", targetBtnRect.left + "px");
+    animCard.style.setProperty("--end-top", targetBtnRect.top + "px");
+    
+    // 문서에 추가
+    document.body.appendChild(animCard);
+    
+    // 애니메이션 완료 후 처리
+    setTimeout(function() {
+        // 애니메이션 요소 제거
+        document.body.removeChild(animCard);
+        
+        // 원래 코드 실행
+        targetBtn.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/" + cards[rndNumber] + ".png')";
+        targetBtn.style.backgroundSize = targetBtn.style.width + " " + targetBtn.style.height;
+        
+        // 위험 카드(dmg)인 경우
+        if (rndNumber >= 15 && rndNumber < 30) {
+            var dmgIdx = Math.floor((rndNumber - 15) / 3);
+            thisDmg[dmgIdx]++;
             if (thisDmg[dmgIdx] == 2) {
-                btn.innerHTML = "X"
-                permuDmg[dmgIdx]++
-                var btnPerDmg = document.getElementById("btnPerDmg" + dmgPermuCount)
-                btnPerDmg.style.backgroundImage = "url('img/diamant/" + cards[rndNumber] + ".png')"
-                btnPerDmg.style.backgroundSize = btnPerDmg.style.width + " " + btnPerDmg.style.height
-                btnPerDmg.innerHTML = "X"
-                roundReady = false
+                targetBtn.innerHTML = "X";
+                permuDmg[dmgIdx]++;
+                var btnPerDmg = document.getElementById("btnPerDmg" + dmgPermuCount);
+                btnPerDmg.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/" + cards[rndNumber] + ".png')";
+                btnPerDmg.style.backgroundSize = btnPerDmg.style.width + " " + btnPerDmg.style.height;
+                btnPerDmg.innerHTML = "X";
+                roundReady = false;
                 for (let rnd = 1; rnd <= curRound; rnd++) {
-                    var btnRound = document.getElementById("btnCave" + rnd)
-                    btnRound.style.backgroundImage = "url('img/diamant/stg" + rnd + "close.png')"
+                    var btnRound = document.getElementById("btnCave" + rnd);
+                    btnRound.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg" + rnd + "close.png')";
                 }
 
-                var btnCards = document.getElementById("btnCards")
-                btnCards.style.backgroundImage = "url('')"
-                btnRound.innerHTML = ""
-                curRound++
-                dmgPermuCount++
-
-                return
-
+                var btnCards = document.getElementById("btnCards");
+                btnCards.style.backgroundImage = "url('')";
+                btnRound.innerHTML = "";
+                curRound++;
+                dmgPermuCount++;
+                return;
             }
-        var btnDmg = document.getElementById("btnDmg" + dmgCount)
-        btnDmg.style.backgroundImage = "url('img/diamant/" + cards[rndNumber] + ".png')"
-        btnDmg.style.backgroundSize = btnDmg.style.width + " " + btnDmg.style.height
-
-        dmgCount++
-
-    } else if (rndNumber >= 30) {
-        numOfDiscoveredTreasure++
-        discoverTreasure[numOfDiscoveredTreasure] = true
-        var btnRound = document.getElementById("btnCave" + numOfDiscoveredTreasure)
-        btnRound.style.backgroundImage = "url('img/diamant/treasure.png')"
-        btnRound.innerHTML = ""
-    }
-    usingCards[rndNumber] = false
+            var btnDmg = document.getElementById("btnDmg" + dmgCount);
+            btnDmg.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/" + cards[rndNumber] + ".png')";
+            btnDmg.style.backgroundSize = btnDmg.style.width + " " + btnDmg.style.height;
+            dmgCount++;
+        } else if (rndNumber >= 30) { // 보물 카드인 경우
+            numOfDiscoveredTreasure++;
+            discoverTreasure[numOfDiscoveredTreasure] = true;
+            var btnRound = document.getElementById("btnCave" + numOfDiscoveredTreasure);
+            btnRound.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/treasure.png')";
+            btnRound.innerHTML = "";
+        }
+        usingCards[rndNumber] = false;
+    }, 500); // 애니메이션 지속 시간과 일치
 }
-
 function funcClearCard() {
     console.log("clear cards")
 
@@ -318,9 +349,9 @@ function funcCave(round) {
     if (discoverTreasure[round] == true) {
         var btnRound = document.getElementById("btnCave" + round)
         if (curRound > round) {
-            btnRound.style.backgroundImage = "url('img/diamant/stg" + round + "close.png')"
+            btnRound.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg" + round + "close.png')"
         } else {
-            btnRound.style.backgroundImage = "url('img/diamant/stg" + round + ".png')"
+            btnRound.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg" + round + ".png')"
         }
         discoverTreasure[round] = false
         return
@@ -339,7 +370,7 @@ function funcCave(round) {
     } else {
         for (let rnd = 1; rnd <= curRound; rnd++) {
             var btnRound = document.getElementById("btnCave" + rnd)
-            btnRound.style.backgroundImage = "url('img/diamant/stg" + rnd + "close.png')"
+            btnRound.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/stg" + rnd + "close.png')"
             btnRound.innerHTML = ""
         }
         roundReady = false
@@ -374,7 +405,7 @@ function funcCave(round) {
     btn.innerHTML = ""
 
     var btnCards = document.getElementById("btnCards")
-    btnCards.style.backgroundImage = "url('img/diamant/back.png')"
+    btnCards.style.backgroundImage = "url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/diamant/back.png')"
     btnCards.style.backgroundSize = btnCards.style.width + " " + btnCards.style.height
 
     var btnRound = document.getElementById("btnCave" + curRound)
