@@ -4,7 +4,7 @@
     border: 0px;
     margin: 0px;
     padding: 0px;
-    background-image: url('img/bg2.jpg');
+    background-image: url('https://raw.githubusercontent.com/morningM00N/bg/refs/heads/master/img/bg2.jpg');
 }
 
 body {
@@ -21,7 +21,7 @@ body {
     background-color: transparent;
     text-align-last: center;
     position: absolute;
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Stylish', sans-serif;
     border-radius: 5%;
 }
 
@@ -35,4 +35,22 @@ body {
     text-align-last: center;
     -webkit-appearance: none;
     font-family: 'Sriracha', cursive;
+}
+
+.fullscreenBtn {
+    background-color: transparent;
+    color: #4CAF50;
+    font-size: 1.2em;
+    border: 2px solid #4CAF50;
+    border-radius: 10px;
+    font-family: 'Stylish', sans-serif;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.fullscreenBtn:hover {
+    background-color: rgba(76, 175, 80, 0.1); /* 약간의 초록빛 배경 */
+    color: #388E3C;
+    border-color: #388E3C;
+    cursor: pointer;
 }
