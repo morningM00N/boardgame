@@ -129,7 +129,6 @@ background-color: transparent;
 
 
 #btnGameStart {
-
   font-size: 1.25em;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -148,6 +147,32 @@ background-color: transparent;
 }
 
 #btnGameStart:hover, #btnGameStart:focus {
+  background: linear-gradient(90deg, #4ee3c6 0%, #38a3d1 100%);
+  transform: scale(0.99);
+  box-shadow: 0 8px 24px rgba(56, 163, 209, 0.25), 0 2px 8px rgba(0,0,0,0.12);
+}
+
+
+#fullScreen {
+  width: 20%;
+  font-size: 1.25em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: linear-gradient(90deg, #38a3d1 0%, #4ee3c6 100%);
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 4px 16px rgba(56, 163, 209, 0.18), 0 1.5px 4px rgba(0,0,0,0.08);
+  padding: 16px 40px;
+  cursor: pointer;
+  transition: 
+    background 0.3s cubic-bezier(.4,0,.2,1),
+    transform 0.18s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.18s cubic-bezier(.4,0,.2,1);
+  outline: none;
+}
+
+#fullScreen:hover, #btnGameStart:focus {
   background: linear-gradient(90deg, #4ee3c6 0%, #38a3d1 100%);
   transform: scale(0.99);
   box-shadow: 0 8px 24px rgba(56, 163, 209, 0.25), 0 2px 8px rgba(0,0,0,0.12);
