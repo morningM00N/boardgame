@@ -81,4 +81,12 @@ function funcSetMoney() {
   }, 10)
 }
 
+function funcFullScreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    document.documentElement.requestFullscreen();
+  }
+}
+
 //funcSetMoney()
