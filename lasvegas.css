@@ -1,187 +1,181 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            box-sizing: border-box;
+        }
 
-body {
-    background: #7ec6e3;
-    margin: 0;
-    padding: 0;
-}
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* 가로 스크롤 방지 */
+        }
 
-.casino-board {
-    display: flex;
-    align-items: flex-end;
+        body {
+            background: #7ec6e3;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            position: relative;
+        }
 
-    justify-content: center;
-    align-items: stretch;
-    /* 또는 center */
-    height: 95vh;
-    width: 100vw;
-    gap: 16px;
-}
+        .casino-board {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            height: 95vh;
+            width: 100%;
+            gap: 2vw; /* vw 단위로 반응형 간격 */
+            padding: 0 1vw; /* 좌우 여백 추가 */
+        }
 
+        .controller {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            height: 5vh;
+            width: 100%;
+            gap: 2vw;
+            padding: 0 1vw;
+        }
 
-.casino-board {
-  align-items: stretch;
-  width: 100vw;
-  gap: 16px;
-}
+        .controller button {
+            background-color: transparent;
+            height: 100%;
+            border: none;
+            margin: 0;
+            box-sizing: border-box;
+            font-size: 1.2em;
+            min-height: 44px; /* 터치 친화적 최소 높이 */
+        }
 
-.controller {
-    display: flex;
-    align-items: flex-end;
+        .casino-column {
+            flex: 1 1 0;
+            background: linear-gradient(to bottom, #d5eaf3 60%, #6bb1c9 100%);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0002;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            margin: 0;
+            padding: 24px 0;
+            min-width: 0; /* flex 축소 허용 */
+        }
 
-    justify-content: center;
-    align-items: stretch;
-    /* 또는 center */
-    height: 5vh;
-    width: 100vw;
-    gap: 16px;
-}
+        .money-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 16px;
+            gap: 4px;
+            width: 80%;
+        }
 
-.controller button {
-background-color: transparent;
-  height: 100%;     /* controller 높이를 모두 채움 */
-  width: 100%;
-  border: none;     /* 버튼 스타일은 필요에 따라 */
-  margin: 0;        /* 버튼 사이 여백 제거 */
-  box-sizing: border-box;
-  font-size: 1.2em; /* 보기 좋게 */
-}
+        .money-stack img {
+            width: 100%;
+            height: auto;
+            margin-bottom: -110%;
+            z-index: 1;
+            object-fit: contain;
+        }
 
+        .casino-sign {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+            width: 90%;
+        }
 
-.casino-column {
-    flex: 1 1 0;
-    background: linear-gradient(to bottom, #d5eaf3 60%, #6bb1c9 100%);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px #0002;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    position: relative;
-    margin: 0;
-}
+        .casino-sign img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 6px;
+            object-fit: contain;
+        }
 
-.money-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 16px;
-    gap: 4px;
-    width: 80%;
-    /* 컬럼 폭의 65%만큼 이미지가 차지 (원하는 만큼 조절) */
-}
+        .casino-sign span {
+            font-size: clamp(0.8em, 2vw, 1.05em); /* 반응형 폰트 */
+            color: #333;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
 
-.money-stack img {
-    width: 100%;
-    height: auto;
-    margin-bottom: -110%;
-    /* 겹침 효과, 필요시 조절 */
-    z-index: 1;
-    object-fit: contain;
-}
+        #btnGameStart {
+            flex: 1;
+            font-size: clamp(1em, 3vw, 1.25em);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #fff;
+            background: linear-gradient(90deg, #38a3d1 0%, #4ee3c6 100%);
+            border: none;
+            border-radius: 32px;
+            box-shadow: 0 4px 16px rgba(56, 163, 209, 0.18), 0 1.5px 4px rgba(0,0,0,0.08);
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: 
+                background 0.3s cubic-bezier(.4,0,.2,1),
+                transform 0.18s cubic-bezier(.4,0,.2,1),
+                box-shadow 0.18s cubic-bezier(.4,0,.2,1);
+            outline: none;
+            min-height: 44px;
+        }
 
+        #btnGameStart:hover, #btnGameStart:focus {
+            background: linear-gradient(90deg, #4ee3c6 0%, #38a3d1 100%);
+            transform: scale(0.99);
+            box-shadow: 0 8px 24px rgba(56, 163, 209, 0.25), 0 2px 8px rgba(0,0,0,0.12);
+        }
 
-.casino-sign {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 15px;
-    width: 90%;
+        #fullScreen {
+            width: 20%;
+            min-width: 80px;
+            font-size: clamp(0.9em, 2.5vw, 1.25em);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #fff;
+            background: linear-gradient(90deg, #38a3d1 0%, #4ee3c6 100%);
+            border: none;
+            border-radius: 32px;
+            box-shadow: 0 4px 16px rgba(56, 163, 209, 0.18), 0 1.5px 4px rgba(0,0,0,0.08);
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: 
+                background 0.3s cubic-bezier(.4,0,.2,1),
+                transform 0.18s cubic-bezier(.4,0,.2,1),
+                box-shadow 0.18s cubic-bezier(.4,0,.2,1);
+            outline: none;
+            min-height: 44px;
+        }
 
-}
+        #fullScreen:hover, #fullScreen:focus {
+            background: linear-gradient(90deg, #4ee3c6 0%, #38a3d1 100%);
+            transform: scale(0.99);
+            box-shadow: 0 8px 24px rgba(56, 163, 209, 0.25), 0 2px 8px rgba(0,0,0,0.12);
+        }
 
+        .fly-animating {
+            position: fixed;
+            z-index: 1000;
+            pointer-events: none;
+            transition: transform 0.7s cubic-bezier(.4,0,.2,1), opacity 0.7s;
+        }
 
-.casino-sign img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 6px;
-    object-fit: contain;
-}
-
-.casino-sign span {
-    font-size: 1.05em;
-    color: #333;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-
-.casino-column {
-  flex: 1 1 0;
-  background: linear-gradient(to bottom, #d5eaf3 60%, #6bb1c9 100%);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px #0002;
-  width: 180px;
-  min-height: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between; /* 변경: 위-아래로 요소 배치 */
-  position: relative;
-  margin: 0;
-  padding: 24px 0; /* 위아래 여백 추가(선택) */
-}
-
-
-#btnGameStart {
-  font-size: 1.25em;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #fff;
-  background: linear-gradient(90deg, #38a3d1 0%, #4ee3c6 100%);
-  border: none;
-  border-radius: 32px;
-  box-shadow: 0 4px 16px rgba(56, 163, 209, 0.18), 0 1.5px 4px rgba(0,0,0,0.08);
-  padding: 16px 40px;
-  cursor: pointer;
-  transition: 
-    background 0.3s cubic-bezier(.4,0,.2,1),
-    transform 0.18s cubic-bezier(.4,0,.2,1),
-    box-shadow 0.18s cubic-bezier(.4,0,.2,1);
-  outline: none;
-}
-
-#btnGameStart:hover, #btnGameStart:focus {
-  background: linear-gradient(90deg, #4ee3c6 0%, #38a3d1 100%);
-  transform: scale(0.99);
-  box-shadow: 0 8px 24px rgba(56, 163, 209, 0.25), 0 2px 8px rgba(0,0,0,0.12);
-}
-
-
-#fullScreen {
-  width: 20%;
-  font-size: 1.25em;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: #fff;
-  background: linear-gradient(90deg, #38a3d1 0%, #4ee3c6 100%);
-  border: none;
-  border-radius: 32px;
-  box-shadow: 0 4px 16px rgba(56, 163, 209, 0.18), 0 1.5px 4px rgba(0,0,0,0.08);
-  padding: 16px 40px;
-  cursor: pointer;
-  transition: 
-    background 0.3s cubic-bezier(.4,0,.2,1),
-    transform 0.18s cubic-bezier(.4,0,.2,1),
-    box-shadow 0.18s cubic-bezier(.4,0,.2,1);
-  outline: none;
-}
-
-#fullScreen:hover, #btnGameStart:focus {
-  background: linear-gradient(90deg, #4ee3c6 0%, #38a3d1 100%);
-  transform: scale(0.99);
-  box-shadow: 0 8px 24px rgba(56, 163, 209, 0.25), 0 2px 8px rgba(0,0,0,0.12);
-}
-
-
-.fly-animating {
-  position: fixed;
-  z-index: 1000;
-  pointer-events: none;
-  transition: transform 0.7s cubic-bezier(.4,0,.2,1), opacity 0.7s;
-}
+        /* 모바일 최적화 */
+        @media (max-width: 768px) {
+            .casino-board {
+                gap: 1vw;
+                padding: 0 0.5vw;
+            }
+            
+            .controller {
+                gap: 1vw;
+                padding: 0 0.5vw;
+            }
+            
+            .casino-sign span {
+                font-size: clamp(0.7em, 2.5vw, 0.9em);
+            }
+        }
