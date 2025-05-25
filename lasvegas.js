@@ -72,10 +72,10 @@ function funcSetMoney() {
         img.style.left = ""+(0-leftDelta)+"px"
         setTimeout(function(){
           img.style.transform = "translate("+leftDelta+"px," + (boundingBox.height/3*j) + "px)";
-        },10)
+        },50)
       }
     }
-  }, 10)
+  }, 50)
 }
 
 function funcFullScreen() {
