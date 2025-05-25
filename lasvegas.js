@@ -56,9 +56,6 @@ function funcSetMoney() {
       const img = document.createElement("img");
       img.id = "img" + i + j;
       img.src = "https://raw.githubusercontent.com/morningM00N/boardgame/refs/heads/main/img/lasvegas/" + assigned[i][j] + ".png";
-      if (assigned[i][j] == 1 || assigned[i][j] == 5 || assigned[i][j] == 9 || assigned[i][j] == 6) {
-        img.src = "https://raw.githubusercontent.com/morningM00N/boardgame/refs/heads/main/img/lasvegas/2.png";
-      }
       img.alt = "" + assigned[i][j] + "0,000";
       elements[i].appendChild(img);
     }
